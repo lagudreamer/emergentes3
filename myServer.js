@@ -105,7 +105,7 @@ app.get('/stream/:name', (req, res) => {
 
 });
 
-app.listen(8080, function () => {console.log("the server is running")});
+app.listen(8080, function () {console.log("the server is running")});
 
 
 ctrl.warmup.once("warmup", _ => {
