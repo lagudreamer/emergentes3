@@ -30,7 +30,7 @@ class myMongo {
     }
 
     
-    graphJSLD(callback) {
+    graphMG(callback) {
         
         Stream.find((err, streams) => {
             if (err) return console.error(err);
