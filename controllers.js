@@ -24,9 +24,10 @@ class Controlador {
 
 	constructor(){
 
-		this.DB = new db.myDB('./data');
-        this.mongo=new mongoDB.myMongoDB();
+	this.DB = new db.myDB('./data');
         this.warmup = this.DB.events;
+	this.mongo=new mongoDB.myMongo();
+
 	}
 
 	createStream (name, track) {
@@ -155,41 +156,6 @@ class Controlador {
     	};
 
 
-	/*lastN (name, n, callback) {
-
-        	this.DB.getLastObjects(name, n, (response) => {
-
-            		let nfinal = [];
-            		let map = {};
-            		if(!response.result){
-            		    callback(response)
-                    }
-
-            		for (let i of response.result) {
-                        let text = i.text.split(' ');
-                        for (let word of text) {
-
-                            if (map[word]) {
-                                map[word] = map[word] + 1;
-                            } else {
-                                map[word] = 1;
-                            }
-                        }
-                    }
-
-                    for (let j in map){
-                        nfinal.push([j, map[j]]);
-            		}
-
-            		nfinal.sort((elem1,elem2)=>{
-            		    return elem2[1] - elem1[1]
-                    } );
-
-            		response.result = nfinal.splice(0, n);
-
-            		callback(response);
-        	});
-	};*/
 
 	lastN (name, n, callback) {
 
@@ -212,8 +178,8 @@ class Controlador {
         return {
             "@context": {
                "nombre":"http://schema.org/name", "consulta":"http://schema.org/query",
-                "creador":"http://schema.org/agent", "_dt":"http://schema.org/startTime",
-                "uri":"http://schema.org/url"
+                "creador":"http://schema.org/agent", "data":"http://schema.org/startTime",
+                "url":"http://schema.org/url"
 
         }
 
@@ -222,7 +188,7 @@ class Controlador {
     graphJSLD(callback){
         //this.DB.getSearchAction( (result) => {
 
-    	this.mongo.graphJSLD( (result) => {
+    	this.mongo.graphMG( (result) => {
     		callback(result);
 		});
     }
