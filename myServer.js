@@ -105,9 +105,10 @@ app.get('/stream/:name', (req, res) => {
 
 });
 
+app.listen(3030, function () => {console.log("the server is runningpr3")});
+
 
 ctrl.warmup.once("warmup", _ => {
    console.log("Web server running on port 3030");
-   app.listen(3030, ()=>{console.log("the server is runningpr3")});
 });
 
