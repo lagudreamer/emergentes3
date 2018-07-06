@@ -50,7 +50,7 @@ app.post('/stream', (req, res) => {
 
 app.get('/stream/graph',(req, res) =>{
     ctrl.graphJSLD( (result) => {
-        res.send(result/*.map(x => x.description).filter(x=>x!=null)*/)
+        res.send(result.map(x => x.description).filter(x=>x!=null))
     });
 });
 
